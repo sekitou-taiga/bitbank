@@ -1,0 +1,46 @@
+\section{パブリックAPI}
+
+\begin{table}[htbp]
+  \caption{パブリックAPI}
+  \label{tab:API}
+  \begin{tabular}{lll}
+  関数                & 説明                                                                        & 引数                                                                       \\ \hline
+  get\_ticker       & 市場価格を取得                                                                   & pair                                                                     \\
+  get\_depth        & 板情報を取得                                                                    & pair                                                                     \\
+  get\_transactions & \begin{tabular}[c]{@{}l@{}}最新の全約定履歴を取得\\ または、\\ 指定日の全約定履歴を取得\end{tabular} & \begin{tabular}[c]{@{}l@{}}pair\\ または\\ pair, yyyymmdd=None\end{tabular} \\
+  get\_candlestick  & 指定日のロウソク足データを取得                                                           & pair, candle\_type, yyyymmdd                                            
+  \end{tabular}
+  \end{table}
+
+
+\subsection{テイカー情報の取得}
+\lstinputlisting{bitbank1.py}
+sell: 現在の売り注文の最安値\\
+buy: 現在の買い注文の最安値\\
+high: 過去24時間の最高値取引価格\\
+low: 過去24時間の最安値取引価格\\
+last: 最新取引価格\\
+vol: 過去24時間の出来高\\
+
+\subsection{板情報の取得}
+get\_transactionsを用いることで，約定履歴が取得可能になる．
+\lstinputlisting{bitbank2.py}
+get\_depthを使用することで板情報が取得可能．
+ここで，valueにはdict型で「asks:list型」「bids:list型」が格納されているので，joinとmapを用いて文字列に変換している．
+\newpage
+
+\subsection{全約定履歴を取得}
+\lstinputlisting{bitbank3.py}
+「transcation\_id」と「execued\_at」はint型なのでstr型に変換している．また，「execued\_at」はUnixTimeのミリ表示なので，日付に変更する．そこで，datetimeをインポートし，datetime.datetime.fromtimestampを用いている．日時を指定するとその日の全約定履歴も取得可能．
+\begin{lstlisting}[caption=bitbank3.5,label=bitbank3.5]
+  指定した日時の全約定履歴の取得
+  value = get_transactions( 'ペア' )
+  を変更する
+  value = get_transactions( 'ペア', 'YYYYMMDD 型の日付' )
+  YYYYMMDD 型の日付例⇒20180504等
+\end{lstlisting}
+\newpage
+
+\subsection{ロウソク足データの取得}
+get\_candlestickを用いることで，ローソク足データが取得可能となる．
+\lstinputlisting{bitbank4.py}

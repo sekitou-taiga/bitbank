@@ -1,0 +1,20 @@
+\section{準備}
+\subsection{APIの発行}
+itbankのアカウント画面から「API」をクリックし，APIを発行
+
+\subsection{python\_bitbankccのインストール}
+コマンドプロンプトで以下をインストールする
+\begin{center}
+  \colorbox{gray}{pip install git+https://github.com/bitbankinc/python-bitbankcc.git}
+\end{center}
+
+\subsection{APIについて}
+BitbankのAPIは大きく3つに分類される．
+\begin{itemize}
+  \item public API\\
+    公開しているテイカー情報，板情報等
+  \item rest API(private API)\\
+    自身の注文履歴，資産残高の確認や，新規注文をする
+  \item public stream API\\
+    データをリアルタイムで受信・送信する
+\end{itemize}

@@ -1,0 +1,71 @@
+\section{プライベートAPI}
+\begin{verbatim}
+  #AIPキー
+  API_KEY = '5f2d8797-5d8f-4ccb-ac3a-d2bd05d4e5ea'
+  #シークレット
+  API_SECRET = '216c999292e8ee068359f440cb58d5e8c895450356203cd2946f1882491a7394'
+\end{verbatim}
+
+\begin{table}[htbp]
+  \caption{プライベートAPI}
+  \label{tab:API}
+  \begin{tabular}{lll}
+  関数                     & 説明              & 引数                                     \\ \hline
+  get\_asset             & 資産の一覧を取得        &                                        \\
+  get\_orders            & オーダー情報を取得       & pair, order\_id                        \\
+  get\_active\_orders    & アクティブなオーダー情報を取得 & pair, options=None                     \\
+  order                  & オーダーを入れる        & pair, price, amount, side, order\_type \\
+  cancel\_order          & オーダーをキャンセルする    & pair, order\_id                        \\
+  cancel\_orders         & 複数のオーダーをキャンセルする & pair, order\_ids                       \\
+  get\_orders\_info      & 複数のオーダー情報を取得    & pair, order\_ids                       \\
+  get\_trade\_history    & 約定履歴を取得         & pair, order\_count                     \\
+  get\_withdraw\_account & 出金アカウントを取得      & asset                                  \\
+  request\_withdraw      & 出金をリクエスト        & asset, uuid, amount, token            
+  \end{tabular}
+  \end{table}
+
+\newpage
+
+\subsection{アセット情報の取得}
+get.assetを用いることでアセット情報が取得可能になる．
+\lstinputlisting{bitbank5.py}
+valueの値を変更することで取得する情報を変更できる．
+\newpage
+
+\subsection{注文IDを指定して注文情報を取得}
+get\_orderを用いることで，指定したIDの注文情報が取得可能となる. 
+\lstinputlisting{bitbank6.py}
+prv.get\_orders\_infoを用いることで，複数の注文IDを指定することが可能となる.
+\begin{verbatim}
+  単数：prv.get_order( 'ペア', '注文ID' )
+  複数：prv.get_orders_info(  'ペア', ['注文ID', '注文ID', .....] )
+\end{verbatim}
+「注文状態」には，「UNFILLED(注文中)」「PARTIALLY\_FILLED(注文中(一部約定))」「FULLY\_FILLED(約定済み)」「CANCELED\_UNFILLED(取消済)」「CANCELED\_PARTIALLY\_FILLED(取消済(一部約定))」の5種類存在する．
+\newpage
+
+\subsection{アクティブな注文情報を取得}
+get\_active\_ordersを用いることで，アクティブな注文情報が取得可能となる.
+\lstinputlisting{bitbank7.py}
+\newpage
+
+\subsection{新規注文を行う}
+\textcolor{red}{本当に注文が通るので，自己責任で行う}\\
+orderにより，新規注文が可能となる.一方で，cancel\_orderにより，注文をキャンセル可能となる(複数キャンセルも可能).
+\lstinputlisting{bitbank8.py}
+\begin{verbatim}
+  単数：cancel_order( 'ペア', '注文ID' )
+  複数：cancel_order( 'ペア', ['注文ID', '注文ID', .....] )
+\end{verbatim}
+ただし，以下の様に「取引」を選択したAPIキーを発行・使用する必要があることに注意.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=8.0cm]{APIキーの確認.eps}
+  \caption{APIキーの確認}
+  \label{APIキーの確認}
+\end{figure}
+\newpage
+
+\subsection{約定履歴を取得する}
+\textcolor{red}{故障中?}\\
+trade\_historyを使用することで約定履歴を取得できる．
+\lstinputlisting{bitbank9.py}

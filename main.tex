@@ -1,0 +1,125 @@
+\documentclass[a4j,titlepage]{jarticle}
+\usepackage{epic,eepic}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{latexsym}
+\usepackage{theorem}
+\usepackage{url}
+\usepackage{cases}
+\usepackage{comment}
+\usepackage{multirow}
+\usepackage{color} %色
+\usepackage[dvipdfmx]{hyperref} %urlの色
+\usepackage{fancyhdr} %ヘッダーフッター
+\usepackage{here} %図表の場所
+\usepackage{listings,jlisting} %ソースコード
+
+%url等の色を決める
+\hypersetup{
+    colorlinks=true,
+    citecolor=black,
+    linkcolor=black,
+    urlcolor=blue,
+}
+
+%色の定義
+%\definecolor{whatcolor}{rgb}{ rgb値, rgb値, rgb値}
+
+%grayを定義
+\definecolor{gray}{gray}{0.9}
+
+\oddsidemargin20mm
+\columnsep\textwidth
+\advance\columnsep-2\columnwidth
+\columnsep.5\columnsep
+\advance\oddsidemargin-1in
+\evensidemargin\oddsidemargin
+
+%図表の表示
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\tablename}{Table }
+\renewcommand{\lstlistingname}{Src.}
+
+%subsubsubsectionとsubsubsubsubsectionを定義
+\setcounter{secnumdepth}{5}
+\makeatletter
+\newcommand{\subsubsubsection}{\@startsection{paragraph}{4}{\z@}%
+{1.5\baselineskip \@plus.5\dp0 \@minus.2\dp0}%
+{.5\baselineskip \@plus2.3\dp0}%
+{\reset@font\normalsize\bfseries}
+}
+\newcommand{\subsubsubsubsection}{\@startsection{subparagraph}{5}{\z@}%
+{1.5\baselineskip \@plus.5\dp0 \@minus.2\dp0}%
+{.5\baselineskip \@plus2.3\dp0}%
+{\reset@font\normalsize\itshape}
+}
+\makeatother
+\setcounter{tocdepth}{5}
+
+%ソースコードの表示に関する設定
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\smallitshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=-0.5ex
+}
+
+\pagestyle{empty}
+\newcolumntype{C}[1]{>{\centering}p{#1\linewidth}|}
+
+\title{Bitbank自動取引}
+%\etitle{英語題名}
+
+\author{
+  関藤大凱\ \
+}
+
+%\eauthor{Taiga Sekitou}
+%\jaffiliation{$^{*1}$ & 岡山大学機械システム系学科システム工学コース}
+%\eaffiliation{$^{*1}$ Department of Mechanical and System Engineering, Okayama Univesity}
+
+\date{\today}
+
+%\abstract{abstract}
+%\keywords{keyword}
+
+\pagestyle{fancy}
+\lhead{} %ヘッダ左
+\chead{} %ヘッダ中央
+\rhead{Bitbank} %ヘッダ右．コンパイルした日付を表示
+\lfoot{} %フッタ左
+\cfoot{\thepage} %フッタ中央．ページ番号を表示
+\rfoot{} %フッタ右
+ \renewcommand{\headrulewidth}{0.5pt} %ヘッダの罫線
+ \renewcommand{\footrulewidth}{0.5pt} %フッタの罫線
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+%目次
+\tableofcontents
+\clearpage
+
+\include{準備.tex}
+\include{パブリックAPI.tex}
+\include{プライベートAPI.tex}
+
+
+\end{document}
+

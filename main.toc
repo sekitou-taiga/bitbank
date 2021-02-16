@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}準備}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}APIの発行}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}python\_bitbankccのインストール}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}APIについて}{2}{subsection.1.3}%
+\contentsline {section}{\numberline {2}パブリックAPI}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}テイカー情報の取得}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}板情報の取得}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}全約定履歴を取得}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}ロウソク足データの取得}{6}{subsection.2.4}%
+\contentsline {section}{\numberline {3}プライベートAPI}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}アセット情報の取得}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}注文IDを指定して注文情報を取得}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}アクティブな注文情報を取得}{10}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}新規注文を行う}{11}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}約定履歴を取得する}{12}{subsection.3.5}%
